@@ -1,5 +1,10 @@
 <h1>LeanIX Coding Challenge</h1>
 
-<app-table></app-table>
-
-<router-outlet></router-outlet>
+<mat-grid-list cols="4">
+    <mat-grid-tile [colspan]="2">
+        <app-table></app-table>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+        <router-outlet></router-outlet>
+    </mat-grid-tile>
+</mat-grid-list>

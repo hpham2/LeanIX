@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -13,10 +14,14 @@ export class TableComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor() { }
+  constructor( private router: Router ) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  goToRepo(id) {
+    this.router.navigate(['/repo', id]);
   }
 
 }

@@ -6,8 +6,7 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 
-const uri = 'https://o5x5jzoo7z.sse.codesandbox.io/graphql';
-// const uri = 'https://api.github.com/graphql';
+const uri = 'https://api.github.com/graphql';
 
 @NgModule({
   exports: [
@@ -21,26 +20,26 @@ export class GraphQLModule {
     apollo: Apollo,
     httpLink: HttpLink
   ) {
-    // const http = httpLink.create({uri: '/graphql'});
+    const http = httpLink.create({uri});
 
-    // const authLink = new ApolloLink((operation, forward) => {
-    //   // Get the authentication token from local storage if it exists
-    //   const token = '3628305082fcacb760c72b74089aee6fbe8c893d';
+    const authLink = new ApolloLink((operation, forward) => {
+      const token = '853e45a1fc31dd553ed711292541e0092bd42a69';
 
-    //   // Use the setContext method to set the HTTP headers.
-    //   operation.setContext({
-    //       headers: {
-    //           Authorization: token ? `Bearer ${token}` : ''
-    //       }
-    //   });
+      // Use the setContext method to set the HTTP headers.
+      operation.setContext({
+          headers: {
+              Authorization: token ? `Bearer ${token}` : ''
+          }
+      });
 
-    //   // Call the next link in the middleware chain.
-    //   return forward(operation);
-    // });
+      // Call the next link in the middleware chain.
+      return forward(operation);
+    });
+
     // create Apollo
     apollo.create({
-      link: httpLink.create({ uri }),
-    //   link: authLink.concat(http),
+    //   link: httpLink.create({ uri }),
+      link: authLink.concat(http),
       cache: new InMemoryCache(),
     });
   }

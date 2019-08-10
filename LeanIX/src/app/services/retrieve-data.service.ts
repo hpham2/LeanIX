@@ -9,11 +9,6 @@ import gql from 'graphql-tag';
 export class RetrieveDataService {
   publicRepoLink = 'https://api.github.com/repositories';
 
-  rates: any[];
-  loading = true;
-  error: any;
-
-
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
   getPublicRepoLink() {
@@ -21,32 +16,48 @@ export class RetrieveDataService {
       console.log(data);
     });
 
-    // this.http.get('https://o5x5jzoo7z.sse.codesandbox.io/graphql').subscribe(data => {
-    //   console.log(data);
-    // });
-
     this.apollo
       .watchQuery({
         query: gql`
           {
-            rates(currency: "USD") {
-              currency
-              rate
+            repository(owner:"mojombo", name:"grit") {
+              id
+              name
             }
           }
         `,
+
         // query: gql`
-        //   {
-        //     owner {
-        //       id
+        // {repository(owner:"octocat", name:"Hello-World") {
+        //   issues(last:20, states:CLOSED) {
+        //     edges {
+        //       node {
+        //         title
+        //         url
+        //         labels(first:5) {
+        //           edges {
+        //             node {
+        //               name
+        //             }
+        //           }
+        //         }
+        //       }
         //     }
         //   }
+        // }}
         // `,
+
         // query: gql`
-        //   organization(login: "nasa") {
-        //     name
-        //     url
-        //   }
+        //   {__schema {
+        //     types {
+        //       name
+        //       kind
+        //       description
+        //       fields {
+        //         name
+        //       }
+        //     }
+        //   }}
         // `,
       })
       .valueChanges.subscribe(result => {

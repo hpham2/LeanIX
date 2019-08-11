@@ -19,11 +19,11 @@ export class RetrieveDataService {
 
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
-  getPublicRepoLink(queryname) {
-    this.http.get(this.publicRepoLink).subscribe(data => {
-      console.log(data);
-    });
+  getPublicRepoLink() {
+    return this.http.get(this.publicRepoLink);
+  }
 
+  getRepoDetail(queryname) {
     this.apollo
       .watchQuery({
         query: this.gqlQueryPosts,

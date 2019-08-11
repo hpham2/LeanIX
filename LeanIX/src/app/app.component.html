@@ -1,9 +1,9 @@
 <img id="logo" src="../assets/leanix-logo.jpg">
 <h1>Coding Challenge</h1>
 
-<mat-grid-list cols="5">
-    <mat-grid-tile id="repository-table" [colspan]="2">
-        <mat-card>
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="40%">
+        <mat-card id="repository-table">
             <mat-card-header>
                 <h2>Public Repositories</h2>
             </mat-card-header>
@@ -11,9 +11,10 @@
                 <app-table></app-table>
             </mat-card-content>
         </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" style="height: 100%" >
-        <mat-card>
+    </div>
+
+    <div class="item item-3" fxFlex="45%">
+        <mat-card id="contributor-list">
             <mat-card-header>
                 <h2>Repository contributors</h2>
             </mat-card-header>
@@ -21,5 +22,5 @@
                 <router-outlet></router-outlet>
             </mat-card-content>
         </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div>
+</div>

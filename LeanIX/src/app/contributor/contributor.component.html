@@ -1,17 +1,14 @@
 <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar 
-        [style.background-image]="image"
-        style="background-size: cover;"></div>
-      <mat-card-title>
-        {{loginName}}
-      </mat-card-title>
-      <mat-card-subtitle>
-        {{id}}
-      </mat-card-subtitle>
-      <a href="{{contributorLink}}">
-        <i>Get data about the contributor</i>
-      </a>
-    </mat-card-header>
-  </mat-card>
-  
+  <mat-card-header>
+    <div mat-card-avatar [style.background-image]="image" style="background-size: cover;"></div>
+    <mat-card-title>
+      {{loginName}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{id}}
+    </mat-card-subtitle>
+    <a href="{{contributorLink}}" target="_blank">
+      <i>Get data about the contributor</i>
+    </a>
+  </mat-card-header>
+</mat-card>

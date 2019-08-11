@@ -1,7 +1,7 @@
 #logo {
     max-width: 10%;
     float: left;
-    margin: 0 1% 0 5%;
+    margin: 0 2% 0 5%;
 }
 
 h1 {
@@ -10,5 +10,11 @@ h1 {
 }
 
 #repository-table {
-    height: 100%;
+    background-color: aliceblue;
+    margin: 0 20% 2% 20%;
+}
+
+#contributor-list {
+    background-color: rgb(243, 151, 97);
+    margin: 0 20% 2% 0;
 }

@@ -20,7 +20,6 @@ export class RepoComponent implements OnInit, OnDestroy {
       this.login = params.login;
       this.name = params.name;
       this.retrieveDataService.getRepoDetail(this.login, this.name).subscribe(detail => {
-        console.log(detail);
         this.contributorList = detail;
       });
     });

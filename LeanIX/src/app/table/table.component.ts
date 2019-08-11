@@ -11,7 +11,7 @@ import { RetrieveDataService } from '../services/retrieve-data.service';
 })
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['name'];
-  dataSource = new MatTableDataSource<Repository>();
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -21,7 +21,6 @@ export class TableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
 
     this.retrieveDataService.getPublicRepoList().subscribe(result => {
-      console.log(result.data['search'].edges);
       this.dataSource.data = result.data['search'].edges;
     });
   }
@@ -31,10 +30,4 @@ export class TableComponent implements OnInit {
     const name = repo.node.name;
     this.router.navigate(['/repo', login, name]);
   }
-
-}
-
-export interface Repository {
-  name: string;
-  id: number;
 }

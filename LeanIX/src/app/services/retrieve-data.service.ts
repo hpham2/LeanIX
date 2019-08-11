@@ -9,7 +9,7 @@ import gql from 'graphql-tag';
 export class RetrieveDataService {
   gqlQueryPosts = gql`
     query gqlQueryPosts {
-      search(query: "is:public", type: REPOSITORY, first: 50) {
+      search(query: "is:public", type: REPOSITORY, first: 100) {
         repositoryCount
         edges {
           node {

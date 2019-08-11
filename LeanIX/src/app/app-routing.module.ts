@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RepoComponent } from './repo/repo.component';
 
 const routes: Routes = [
-  {path: 'repo/:id' , component: RepoComponent}
+  {path: 'repo/:login/:name' , component: RepoComponent}
 ];
 
 @NgModule({

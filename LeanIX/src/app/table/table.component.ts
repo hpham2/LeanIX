@@ -10,7 +10,7 @@ import { RetrieveDataService } from '../services/retrieve-data.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['name'];
   dataSource = new MatTableDataSource<Repository>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -19,16 +19,25 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource);
+    
+    // this.retrieveDataService.getPublicRepoList().subscribe((reposList: Repository[]) => {
+    //   this.dataSource.data = reposList;
+    //   console.log(reposList);
 
-    this.retrieveDataService.getPublicRepoLink().subscribe((reposList: Repository[]) => {
-      this.dataSource.data = reposList;
+    // });
+
+    this.retrieveDataService.getPublicRepoList().subscribe(result => {
+      console.log(result.data['search'].edges);
+      this.dataSource.data = result.data['search'].edges;
     });
   }
 
   goToRepo(repo) {
-    console.log(repo)
-    // this.router.navigate(['/repo', id]);
+    const login = repo.node.owner.login;
+    const name = repo.node.name;
+    console.log(name)
+    console.log(login)
+    this.router.navigate(['/repo', login, name]);
   }
 
 }

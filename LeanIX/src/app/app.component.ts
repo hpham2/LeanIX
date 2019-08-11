@@ -1,16 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { RetrieveDataService } from './services/retrieve-data.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  reposList;
+export class AppComponent {
 
-  constructor(private retrieveDataService: RetrieveDataService) { }
-
-  ngOnInit() {
-  }
+  constructor() { }
 }

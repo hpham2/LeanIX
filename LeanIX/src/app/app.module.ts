@@ -12,12 +12,15 @@ import { TableComponent } from './table/table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RepoComponent } from './repo/repo.component';
 import { GraphQLModule } from './graphql.module';
+import { ContributorComponent } from './contributor/contributor.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    RepoComponent
+    RepoComponent,
+    ContributorComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -27,7 +30,8 @@ import { GraphQLModule } from './graphql.module';
     MatPaginatorModule,
     MatGridListModule,
     HttpClientModule,
-    GraphQLModule
+    GraphQLModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

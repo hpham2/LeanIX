@@ -1,3 +1,5 @@
-<p>repo works!</p>
-
-{{ id }}
+<app-contributor *ngFor="let contributor of contributorList" 
+    [avatarLink]="contributor.avatar_url"
+    [loginName]="contributor.login"
+    [id]="contributor.id"
+    [contributorLink]="contributor.url"></app-contributor>

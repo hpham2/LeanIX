@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RetrieveDataService } from '../services/retrieve-data.service';
 
 @Component({
@@ -8,9 +8,10 @@ import { RetrieveDataService } from '../services/retrieve-data.service';
   styleUrls: ['./repo.component.css']
 })
 export class RepoComponent implements OnInit, OnDestroy {
-  private login: string;
-  private name: string;
-  private sub: any;
+  login: string;
+  name: string;
+  sub: any;
+  contributorList;
 
   constructor(private route: ActivatedRoute, private retrieveDataService: RetrieveDataService) { }
 
@@ -20,6 +21,7 @@ export class RepoComponent implements OnInit, OnDestroy {
       this.name = params.name;
       this.retrieveDataService.getRepoDetail(this.login, this.name).subscribe(detail => {
         console.log(detail);
+        this.contributorList = detail;
       });
     });
   }

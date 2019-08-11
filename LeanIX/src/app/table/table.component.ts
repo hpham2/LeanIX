@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -19,12 +19,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    
-    // this.retrieveDataService.getPublicRepoList().subscribe((reposList: Repository[]) => {
-    //   this.dataSource.data = reposList;
-    //   console.log(reposList);
-
-    // });
 
     this.retrieveDataService.getPublicRepoList().subscribe(result => {
       console.log(result.data['search'].edges);
@@ -35,8 +29,6 @@ export class TableComponent implements OnInit {
   goToRepo(repo) {
     const login = repo.node.owner.login;
     const name = repo.node.name;
-    console.log(name)
-    console.log(login)
     this.router.navigate(['/repo', login, name]);
   }
 

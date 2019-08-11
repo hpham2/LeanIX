@@ -7,27 +7,6 @@ import gql from 'graphql-tag';
   providedIn: 'root'
 })
 export class RetrieveDataService {
-  publicRepoLink = 'https://api.github.com/repositories';
-  repoDetailLink = 'https://api.github.com/repos/mojombo/grit/contributors';
-  // gqlQueryPosts = gql`
-  //   query gqlQueryPosts($name: String!) {
-  //     repository(owner: "mojombo", name:$name) {
-  //       id
-  //       name
-  //       collaborators(first: 10, affiliation: ALL) {
-  //         edges {
-  //           permission
-  //           node {
-  //             id
-  //             login
-  //             name
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `;
-
   gqlQueryPosts = gql`
   query gqlQueryPosts {
     search(query: "is:public", type: REPOSITORY, first: 50) {
@@ -50,7 +29,6 @@ export class RetrieveDataService {
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
   getPublicRepoList() {
-    // return this.http.get(this.publicRepoLink);
     return this.apollo
       .watchQuery({
         query: this.gqlQueryPosts

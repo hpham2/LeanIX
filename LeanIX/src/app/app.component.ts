@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
     //   console.log(data[0]);
     // });
 
-    this.retrieveDataService.getPublicRepoLink();
+    this.retrieveDataService.getPublicRepoLink("grit");
   }
 }

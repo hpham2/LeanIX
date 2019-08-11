@@ -8,61 +8,31 @@ import gql from 'graphql-tag';
 })
 export class RetrieveDataService {
   publicRepoLink = 'https://api.github.com/repositories';
+  gqlQueryPosts = gql`
+    query gqlQueryPosts($name: String!) {
+      repository(owner: "mojombo", name:$name) {
+        id
+        name
+      }
+    }
+  `;
 
   constructor(private http: HttpClient, private apollo: Apollo) { }
 
-  getPublicRepoLink() {
+  getPublicRepoLink(queryname) {
     this.http.get(this.publicRepoLink).subscribe(data => {
       console.log(data);
     });
 
     this.apollo
       .watchQuery({
-        query: gql`
-          {
-            repository(owner:"mojombo", name:"grit") {
-              id
-              name
-            }
-          }
-        `,
-
-        // query: gql`
-        // {repository(owner:"octocat", name:"Hello-World") {
-        //   issues(last:20, states:CLOSED) {
-        //     edges {
-        //       node {
-        //         title
-        //         url
-        //         labels(first:5) {
-        //           edges {
-        //             node {
-        //               name
-        //             }
-        //           }
-        //         }
-        //       }
-        //     }
-        //   }
-        // }}
-        // `,
-
-        // query: gql`
-        //   {__schema {
-        //     types {
-        //       name
-        //       kind
-        //       description
-        //       fields {
-        //         name
-        //       }
-        //     }
-        //   }}
-        // `,
+        query: this.gqlQueryPosts,
+        variables: {
+          name: queryname
+        }
       })
       .valueChanges.subscribe(result => {
         console.log(result);
       });
   }
-
 }

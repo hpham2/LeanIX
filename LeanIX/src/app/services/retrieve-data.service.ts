@@ -8,23 +8,22 @@ import gql from 'graphql-tag';
 })
 export class RetrieveDataService {
   gqlQueryPosts = gql`
-  query gqlQueryPosts {
-    search(query: "is:public", type: REPOSITORY, first: 50) {
-      repositoryCount
-      edges {
-        node {
-          ... on Repository {
-            name
-            owner {
-              id
-              login
+    query gqlQueryPosts {
+      search(query: "is:public", type: REPOSITORY, first: 50) {
+        repositoryCount
+        edges {
+          node {
+            ... on Repository {
+              name
+              owner {
+                id
+                login
+              }
             }
           }
         }
       }
-    }
-  }
-`;
+    }`;
 
   constructor(private http: HttpClient, private apollo: Apollo) { }
 

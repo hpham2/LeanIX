@@ -1,0 +1,14 @@
+#logo {
+    max-width: 10%;
+    float: left;
+    margin: 0 1% 0 5%;
+}
+
+h1 {
+    font-size: 300%;
+    color: blue;
+}
+
+#repository-table {
+    height: 100%;
+}

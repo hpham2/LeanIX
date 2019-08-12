@@ -9,13 +9,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { RepoComponent } from './repo/repo.component';
-import { ContributorComponent } from './contributor/contributor.component';
+import { ContributorComponent, DialogDataExampleDialog } from './contributor/contributor.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ContributorComponent } from './contributor/contributor.component';
     TableComponent,
     RepoComponent,
     ContributorComponent,
+    DialogDataExampleDialog
   ],
   imports: [
     AppRoutingModule,
@@ -35,7 +37,11 @@ import { ContributorComponent } from './contributor/contributor.component';
     GraphQLModule,
     MatCardModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DialogDataExampleDialog
   ],
   providers: [],
   bootstrap: [AppComponent]

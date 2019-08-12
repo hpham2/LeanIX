@@ -1,14 +1,12 @@
-<mat-card>
+<mat-card (click)="openDialog(contributorDetail)">
   <mat-card-header>
     <div mat-card-avatar [style.background-image]="image" style="background-size: cover;"></div>
     <mat-card-title>
-      {{loginName}}
+      {{contributor.login}}
     </mat-card-title>
     <mat-card-subtitle>
-      {{id}}
+      {{contributor.id}}
+      <p>Please click for more information</p>
     </mat-card-subtitle>
-    <a href="{{contributorLink}}" target="_blank">
-      <i>Get data about the contributor</i>
-    </a>
   </mat-card-header>
 </mat-card>

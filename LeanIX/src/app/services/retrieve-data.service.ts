@@ -38,4 +38,8 @@ export class RetrieveDataService {
   getRepoDetail(login, name) {
     return this.http.get(`https://api.github.com/repos/${login}/${name}/contributors`);
   }
+
+  getContributorDetail(url) {
+    return this.http.get(url);
+  }
 }

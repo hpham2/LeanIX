@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>
+    <b>Information of {{ data.contributorDetail.login }}</b>
+</h1>
+
+<div mat-dialog-content>
+    <ul>
+        <li>
+            <i>Name: </i>
+            <span *ngIf="data.contributorDetail.name !== null; else elseBlock">
+                {{ data.contributorDetail.name }}
+            </span>
+            <ng-template #elseBlock>Not acknowledged</ng-template>
+        </li>
+        <li>
+            <i>Company: </i>
+            <span *ngIf="data.contributorDetail.company !== null; else elseBlock">
+                {{ data.contributorDetail.company }}
+            </span>
+            <ng-template #elseBlock>Not acknowledged</ng-template>
+        </li>
+        <li>
+            <i>Biography: </i>
+            <span *ngIf="data.contributorDetail.bio !== null; else elseBlock">
+                {{ data.contributorDetail.bio }}
+            </span>
+            <ng-template #elseBlock>Not acknowledged</ng-template>
+        </li>
+        <li>
+            <i>Location: </i>
+            <span *ngIf="data.contributorDetail.location !== null; else elseBlock">
+                {{ data.contributorDetail.location }}
+            </span>
+            <ng-template #elseBlock>Not acknowledged</ng-template>
+        </li>
+        <li>
+            <i>Blog: </i>
+            <span *ngIf="data.contributorDetail.blog !== null; else elseBlock">
+                {{ data.contributorDetail.blog }}
+            </span>
+            <ng-template #elseBlock>Not acknowledged</ng-template>
+        </li>
+    </ul>
+</div>

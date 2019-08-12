@@ -54,5 +54,4 @@ export class RepoComponent implements OnInit, OnDestroy {
       this.displayedContributorList = this.contributorList.slice(0, 5);
     }
   }
-
 }

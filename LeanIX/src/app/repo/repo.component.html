@@ -1,8 +1,6 @@
-<app-contributor id="contributor-list" *ngFor="let contributor of displayedContributorList" 
-    [avatarLink]="contributor.avatar_url"
-    [loginName]="contributor.login"
-    [id]="contributor.id"
-    [contributorLink]="contributor.url"></app-contributor>
+<app-contributor id="contributor-list" 
+    *ngFor="let contributor of displayedContributorList" 
+    [contributor]="contributor"></app-contributor>
 
 <button mat-raised-button color="primary" (click)="expand()" [disabled]="isDisabled">
     {{buttonText}}

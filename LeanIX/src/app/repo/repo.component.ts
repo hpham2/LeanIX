@@ -12,6 +12,9 @@ export class RepoComponent implements OnInit, OnDestroy {
   name: string;
   sub: any;
   contributorList;
+  displayedContributorList;
+  isDisabled: boolean;
+  buttonText = 'Expand';
 
   constructor(private route: ActivatedRoute, private retrieveDataService: RetrieveDataService) { }
 
@@ -20,13 +23,36 @@ export class RepoComponent implements OnInit, OnDestroy {
       this.login = params.login;
       this.name = params.name;
       this.retrieveDataService.getRepoDetail(this.login, this.name).subscribe(detail => {
-        this.contributorList = detail;
+        this.displayedContributorList = this.adaptWithDetailLength(detail);
       });
     });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  adaptWithDetailLength(detail) {
+    if (detail.length <= 5) {
+      this.buttonText = 'Expand';
+      this.isDisabled = true;
+      return detail;
+    } else {
+      this.buttonText = 'Expand';
+      this.contributorList = detail;
+      this.isDisabled = false;
+      return detail.slice(0, 5);
+    }
+  }
+
+  expand() {
+    if (this.displayedContributorList.length <= 5) {
+      this.buttonText = 'Hide';
+      this.displayedContributorList = this.contributorList;
+    } else {
+      this.buttonText = 'Expand';
+      this.displayedContributorList = this.contributorList.slice(0, 5);
+    }
   }
 
 }

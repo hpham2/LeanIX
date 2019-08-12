@@ -23,7 +23,7 @@ export class GraphQLModule {
     const http = httpLink.create({uri});
 
     const authLink = new ApolloLink((operation, forward) => {
-      const token = 'aa3584a046b853b94ff5cc9d09b6f702166ee619';
+      const token = '6f43af81bdbd2b3f9a2e31314850262488087aa3';
 
       // Use the setContext method to set the HTTP headers.
       operation.setContext({

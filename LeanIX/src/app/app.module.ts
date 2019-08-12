@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
@@ -33,7 +34,8 @@ import { ContributorComponent } from './contributor/contributor.component';
     HttpClientModule,
     GraphQLModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
